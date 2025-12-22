@@ -75,8 +75,14 @@ WSGI_APPLICATION = 'project1.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'mysql.connector.django',
+        'NAME': 'django_db',
+        'PORT': '3306',
+        'USER':'root',
+        'HOST':'127.0.0.1',
+        'PASSWORD':'Kavya_789000',
+        'OPTIONS':{'autocommit':True}
+
     }
 }
 
