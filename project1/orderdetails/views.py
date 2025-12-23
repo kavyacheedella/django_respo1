@@ -5,11 +5,6 @@ import json
 from django.views.decorators.csrf import csrf_exempt
 from orderdetails.models import OrderDetails
 
-# Create your views here.
-from django.http import JsonResponse
-from django.views.decorators.csrf import csrf_exempt
-import json
-
 @csrf_exempt
 def OrderPlacing(request):
 

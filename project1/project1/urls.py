@@ -18,6 +18,8 @@ from django.contrib import admin
 from django.urls import path
 from basic1.views import home,contact,services,index,sample,sample1,sample2,createData,createProduct,userdata,employee_data
 from orderdetails.views import OrderPlacing
+from moviedetails.views import BookMyshow,get_all_movies
+from bookstore.views import bookdetails,get_details
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -32,5 +34,9 @@ urlpatterns = [
     path('productcreate/',createProduct),
     path('user1data/', userdata),
     path('employeedetails/',employee_data),
-    path('placing/',OrderPlacing)
+    path('placing/',OrderPlacing),
+    path('bookticket/',BookMyshow),
+    path('movies/',get_all_movies),
+    path('books/',bookdetails),
+    path('bookdetails/',get_details)
 ]
