@@ -23,17 +23,17 @@ def student_registration(request):
         return JsonResponse({"status":"registration failed","error":str(e)},status = 500)
 
 def get_student_details(request):
-    student_details = CourseRegistration.objects.values()
+    student_details = CourseRegistration.objects.all()
     total_record = CourseRegistration.objects.count()
     data = []
     for student in student_details:
         data.append(
             {
-             "student_name":student.get("name"),
-             "student_mail":student.get("email"),
-             "student_course":student.get("course"),
-             "student_phnnum":student.get("phone"),
-             "register_time":student.get("registered_at")
+             "student_name":student.name,
+             "student_mail":student.email,
+             "student_course":student.course,
+             "student_phnnum":student.phone,
+             "register_time":student.registered_at
             }
         )
         return JsonResponse({"status":"data fetch successfully","data":data,"total":total_record})
