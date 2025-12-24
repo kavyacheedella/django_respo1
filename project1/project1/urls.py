@@ -20,6 +20,7 @@ from basic1.views import home,contact,services,index,sample,sample1,sample2,crea
 from orderdetails.views import OrderPlacing
 from moviedetails.views import BookMyshow,get_all_movies
 from bookstore.views import bookdetails,get_details
+from registrations.views import student_registration,get_student_details
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -38,5 +39,7 @@ urlpatterns = [
     path('bookticket/',BookMyshow),
     path('movies/',get_all_movies),
     path('books/',bookdetails),
-    path('bookdetails/',get_details)
+    path('bookdetails/',get_details),
+    path('registeration/',student_registration),
+    path('studentdetails/',get_student_details)
 ]

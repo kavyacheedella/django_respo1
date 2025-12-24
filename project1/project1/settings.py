@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'basic1',
     'orderdetails',
     'moviedetails',
-    'bookstore'
+    'bookstore',
+    'registrations'
 ]
 
 MIDDLEWARE = [
