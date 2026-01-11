@@ -41,7 +41,9 @@ INSTALLED_APPS = [
     'orderdetails',
     'moviedetails',
     'bookstore',
-    'registrations'
+    'registrations',
+    'eligibility_checking'
+    
 ]
 
 MIDDLEWARE = [
@@ -52,7 +54,10 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'eligibility_checking.middleware.LoginCheckMiddleware'
 ]
+
+
 
 ROOT_URLCONF = 'project1.urls'
 

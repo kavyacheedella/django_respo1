@@ -15,12 +15,13 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path,re_path
 from basic1.views import home,contact,services,index,sample,sample1,sample2,createData,createProduct,userdata,employee_data
 from orderdetails.views import OrderPlacing
 from moviedetails.views import BookMyshow,get_all_movies
-from bookstore.views import bookdetails,get_details
+from bookstore.views import bookdetails,get_details,update_book_details,del_book_details,update_book_by_author_regex,delete_book_by_author_regex
 from registrations.views import student_registration,get_student_details
+from eligibility_checking.views import attend_exam
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -38,8 +39,14 @@ urlpatterns = [
     path('placing/',OrderPlacing),
     path('bookticket/',BookMyshow),
     path('movies/',get_all_movies),
+    path('registeration/',student_registration),
+    path('studentdetails/',get_student_details),
     path('books/',bookdetails),
     path('bookdetails/',get_details),
-    path('registeration/',student_registration),
-    path('studentdetails/',get_student_details)
+    path('updatebookdetails/',update_book_details),
+    # path('delbookdetails/<str:ref_author>/',del_book_details)
+    re_path(r'^delbookdetails/(?P<ref_author>[A-za-z\. ]+)/$',del_book_details),
+    path('delbookdetailsregex/',delete_book_by_author_regex),
+    path('updatebookdetailsregex/',update_book_by_author_regex),
+    path('student_eligibility/',attend_exam)
 ]
