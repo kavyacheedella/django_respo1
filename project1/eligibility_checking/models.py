@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 
 
 class StudentProfile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE,related_name='eligibility_checking')
     has_hall_ticket = models.BooleanField(default=False)
     attendance_percentage = models.IntegerField(default=0)
     exam_fee_paid = models.BooleanField(default=False)
