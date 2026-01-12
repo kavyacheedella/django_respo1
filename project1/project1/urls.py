@@ -23,6 +23,7 @@ from bookstore.views import bookdetails,get_details,update_book_details,del_book
 from registrations.views import student_registration,get_student_details
 from eligibility_checking.views import attend_exam
 from sign_up_page.views import signup
+from sign_up_for_users.views import user_profile
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -50,5 +51,6 @@ urlpatterns = [
     path('delbookdetailsregex/',delete_book_by_author_regex),
     path('updatebookdetailsregex/',update_book_by_author_regex),
     path('student_eligibility/',attend_exam),
-    path('normal_user_checking/',signup)
+    path('normal_user_checking/',signup),
+    path('user_profile/',user_profile)
 ]

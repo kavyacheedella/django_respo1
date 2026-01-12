@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'bookstore',
     'registrations',
     'eligibility_checking',
-    'sign_up_page'
+    'sign_up_page',
+    'sign_up_for_users'
     
 ]
 
@@ -55,8 +56,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'eligibility_checking.middleware.LoginCheckMiddleware',
-    'sign_up_page.middleware.regexMiddleware'
+    # 'eligibility_checking.middleware.LoginCheckMiddleware',
+    'sign_up_page.middleware.regexMiddleware',
+    'sign_up_for_users.middleware.validationMiddleware'
 ]
 
 
