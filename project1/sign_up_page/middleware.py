@@ -8,7 +8,7 @@ class regexMiddleware:
 
         self.username_pattern = re.compile(r'^[a-zA-Z0-9_]{4,20}$')
         self.email_pattern = re.compile(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$')
-        self.password_pattern = re.compile(r'^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$]')
+        self.password_pattern = re.compile(r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$')
 
     def __call__(self, request):
 
@@ -19,9 +19,9 @@ class regexMiddleware:
             except Exception as e:
                 return JsonResponse({"error":"Invalid JSON"},status = 403)
             
-            username = data.get(username, "")
-            email = data.get(email, "")
-            password = data.get(password, "")
+            username = data.get("username", "")
+            email = data.get("email", "")
+            password = data.get("password", "").strip()
 
             if not self.username_pattern.fullmatch(username):
                 return JsonResponse({"error":"Invalid username format"},status = 400)
