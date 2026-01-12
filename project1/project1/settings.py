@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'moviedetails',
     'bookstore',
     'registrations',
-    'eligibility_checking'
+    'eligibility_checking',
+    'sign_up_page'
     
 ]
 
@@ -54,7 +55,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'eligibility_checking.middleware.LoginCheckMiddleware'
+    'eligibility_checking.middleware.LoginCheckMiddleware',
+    'sign_up_page.middleware.regexMiddleware'
 ]
 
 

@@ -22,6 +22,7 @@ from moviedetails.views import BookMyshow,get_all_movies
 from bookstore.views import bookdetails,get_details,update_book_details,del_book_details,update_book_by_author_regex,delete_book_by_author_regex
 from registrations.views import student_registration,get_student_details
 from eligibility_checking.views import attend_exam
+from sign_up_page.views import signup
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -48,5 +49,6 @@ urlpatterns = [
     re_path(r'^delbookdetails/(?P<ref_author>[A-za-z\. ]+)/$',del_book_details),
     path('delbookdetailsregex/',delete_book_by_author_regex),
     path('updatebookdetailsregex/',update_book_by_author_regex),
-    path('student_eligibility/',attend_exam)
+    path('student_eligibility/',attend_exam),
+    path('normal_user_checking/',signup)
 ]
