@@ -8,6 +8,9 @@ class LoginCheckMiddleware:
         # Allow admin and static files
         if request.path.startswith('/admin/'):
             return self.get_response(request)
+        
+        if request.path == '/signup/':
+            return self.get_response(request)
 
         # DEBUG (temporary) – add this print
         print("USER:", request.user, "AUTH:", request.user.is_authenticated)
