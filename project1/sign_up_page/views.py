@@ -10,7 +10,7 @@ from .models import StudentProfile
 
 def signup(request):
     try:
-        if request.method == 'POST':
+        if request.path == "/signup" and request.method == 'POST':
             data = json.loads(request.body)
 
             user = User.objects.create_user(

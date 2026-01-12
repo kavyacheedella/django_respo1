@@ -12,7 +12,7 @@ class regexMiddleware:
 
     def __call__(self, request):
 
-        if request.path == "/signup" and request.method == "POST":
+        if request.method == "POST":
             
             try:
                 data = json.loads(request.body)
