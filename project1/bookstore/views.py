@@ -11,6 +11,7 @@ def bookdetails(request):
     try:
         if(request.method=='POST'):
             data = json.loads(request.body)
+
             details = Bookstore.objects.create(
                 Bookname = data.get("book_name"),
                 Author = data.get("author_name"),
@@ -18,6 +19,7 @@ def bookdetails(request):
                 Rating = data.get("rating"),
                 Category = data.get("category")
             )
+
             return JsonResponse({"status":"success","data":data},status = 201)
         
         else:
@@ -27,6 +29,7 @@ def bookdetails(request):
         
 
 def get_details(request):
+
     books_details = Bookstore.objects.all()
     total = Bookstore.objects.count()
 
@@ -47,29 +50,41 @@ def get_details(request):
 def update_book_details(request):
     try:
         if (request.method=="PUT"):
+
             data = json.loads(request.body)
+
             ref_author = data.get("Author")
             new_price = data.get("new_price")
+
             update = Bookstore.objects.filter(Author=ref_author).update(Price = new_price)
+
             if update==0:
                 msg = "no records found"
             else:
-                msg = "record updated successfully"    
+                msg = "record updated successfully"  
+      
             return JsonResponse({"status":"success","msg":msg},status=200)
+        
         return JsonResponse({"status":"failure","msg":"only put method is allowed"},status = 400)
+    
     except Exception as e:
         return JsonResponse({"status":"error","message":str(e)},status=500)
 
 @csrf_exempt
 def del_book_details(request,ref_author):
+
     try:
         if (request.method == "DELETE"):
+
             delete = Bookstore.objects.filter(Author=ref_author).delete()
+
             if delete[0] == 0:
                 msg = "no records found"
             else:
                 msg = "record deleted successfully"
+
             return JsonResponse({"status":"success","msg":msg},status=200)
+        
         return JsonResponse({"status":"failure","msg":"only delete method is allowed"},status=400)
     except Exception as e:
         return JsonResponse({"status":"error","message":str(e)},status=500)
