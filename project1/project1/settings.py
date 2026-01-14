@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'registrations',
     'eligibility_checking',
     'sign_up_page',
-    'sign_up_for_users'
+    'sign_up_for_users',
+    'users'
     
 ]
 
@@ -57,8 +58,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     # 'eligibility_checking.middleware.LoginCheckMiddleware',
-    'sign_up_page.middleware.regexMiddleware',
-    'sign_up_for_users.middleware.validationMiddleware'
+    # 'sign_up_page.middleware.regexMiddleware',
+    # 'sign_up_for_users.middleware.validationMiddleware'
 ]
 
 
