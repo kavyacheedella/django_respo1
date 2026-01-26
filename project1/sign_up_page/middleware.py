@@ -12,25 +12,38 @@ class regexMiddleware:
 
     def __call__(self, request):
 
-        if request.method == "POST":
+        if request.path in ["/signup" , "/login"] or request.method == "POST":
             
             try:
                 data = json.loads(request.body)
             except Exception as e:
                 return JsonResponse({"error":"Invalid JSON"},status = 403)
             
-            username = data.get("username", "")
-            email = data.get("email", "")
-            password = data.get("password", "").strip()
+            if request.method == "/signup":
+                
+                username = data.get("username", "") 
+                email = data.get("email", "") 
+                password = data.get("password", "").strip() 
 
-            if not self.username_pattern.fullmatch(username):
-                return JsonResponse({"error":"Invalid username format"},status = 400)
-            if not self.email_pattern.fullmatch(email):
-                return JsonResponse({"error":"invalid email format"},status = 400)
-            if not self.password_pattern.fullmatch(password):
-                return JsonResponse({"error":"invalid password format"},status = 400)
+                if not username or not email or not password:
+                    return JsonResponse({"error": "All fields are required"}, status=400)
+                if not self.username_pattern.fullmatch(username): 
+                    return JsonResponse({ "error" :"Invalid username format" }, status = 400) 
+                if not self.email_pattern.fullmatch(email): 
+                    return JsonResponse({ "error" :"invalid email format" }, status = 400) 
+                if not self.password_pattern.fullmatch(password): 
+                    return JsonResponse({ "error" :"invalid password format" },status = 400)
+                
+            if request.method == "/login":
+
+                username = data.get("username")
+                password = data.get("password")
+
+                if not username or not password:
+                    return JsonResponse({"error":"username and password are invalid"},status = 400) 
         
-        return self.get_response(request)
+        response = self.get_response(request)
+        return response
 
 
 
