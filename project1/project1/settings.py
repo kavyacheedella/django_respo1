@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
 from pathlib import Path
+from datetime import timedelta
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -37,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
     'basic1',
     'orderdetails',
     'moviedetails',
@@ -60,6 +62,7 @@ MIDDLEWARE = [
     # 'eligibility_checking.middleware.LoginCheckMiddleware',
     # 'sign_up_page.middleware.regexMiddleware',
     # 'sign_up_for_users.middleware.validationMiddleware'
+    'sign_up_for_users.middleware.validationMiddleware'
 ]
 
 
@@ -136,3 +139,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
+
+

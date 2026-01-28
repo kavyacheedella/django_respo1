@@ -22,8 +22,8 @@ from moviedetails.views import BookMyshow,get_all_movies
 from bookstore.views import bookdetails,get_details,update_book_details,del_book_details,update_book_by_author_regex,delete_book_by_author_regex
 from registrations.views import student_registration,get_student_details
 from eligibility_checking.views import attend_exam
-from sign_up_page.views import signup
-from sign_up_for_users.views import user_profile
+from sign_up_page.views import signup_view,login_view,logout_view
+from sign_up_for_users.views import signup,login
 from users.views import user_data , get_users
 
 urlpatterns = [
@@ -52,8 +52,11 @@ urlpatterns = [
     path('delbookdetailsregex/',delete_book_by_author_regex),
     path('updatebookdetailsregex/',update_book_by_author_regex),
     path('student_eligibility/',attend_exam),
-    path('normal_user_checking/',signup),
-    path('user_profile/',user_profile),
+    path('signup_view/',signup_view),
+    path('login_view/',login_view),
+    path('logout_view/',logout_view),
+    path('signup/',signup),
+    path('login/',login),
     path('add-user/',user_data),
     path('users/',get_users)
 ]
