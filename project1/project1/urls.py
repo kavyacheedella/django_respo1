@@ -26,6 +26,7 @@ from eligibility_checking.views import attend_exam
 from sign_up_for_users.views import signup,login
 from users.views import user_data , get_users
 from jwt_auth.views import signup_view,login_view,protected_view
+from role_jwt.views import signup_view,login_view,protected_view,admin_only_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -62,5 +63,9 @@ urlpatterns = [
     path('users/',get_users),
     path('signup_auth/',signup_view),
     path('login_auth/',login_view),
-    path('protect_auth/',protected_view)
+    path('protect_auth/',protected_view),
+    path('role_signup/',signup_view),
+    path('role_login/',login_view),
+    path('role_protected/',protected_view),
+    path('role_admin/',admin_only_view)
 ]

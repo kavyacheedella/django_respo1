@@ -12,12 +12,17 @@ class Checkingmiddleware:
 
     def __call__(self,request):
 
-        if request.path in ["/signup" , "/login"] or request.method == "POST":
+        JSON_REQUIRED_PATHS = ["/login/", "/signup/"]
 
-            try:
-                data = json.loads(request.body)
-            except Exception as e:
-                return JsonResponse({"status":"error","msg":"invalid json format"},status = 403)
+        if request.path in JSON_REQUIRED_PATHS:
+            if request.method == "POST":
+
+                if not request.body:
+                    return JsonResponse({"error": "Request body required"},status=400)
+                try:
+                    data = json.loads(request.body)
+                except json.JSONDecodeError:
+                    return JsonResponse({"error": "Invalid JSON format"},status=400)
             
             if request.method == "/signup":
 
@@ -42,6 +47,6 @@ class Checkingmiddleware:
                 if not username or not password:
                     return JsonResponse({"error":"username and password are invalid"},status = 400) 
                 
-            return self.get_response(request)
+        return self.get_response(request)
 
         

@@ -61,7 +61,8 @@ INSTALLED_APPS = [
     'sign_up_page',
     'sign_up_for_users',
     'users',
-    'jwt_auth'
+    'jwt_auth',
+    'role_jwt'
     
 ]
 
@@ -77,7 +78,7 @@ MIDDLEWARE = [
     # 'sign_up_page.middleware.regexMiddleware',
     # 'sign_up_for_users.middleware.validationMiddleware'
     'sign_up_for_users.middleware.ValidationMiddleware',
-    'jwt_auth.middleware.Checkingmiddleware'
+    'project1.middleware.Checkingmiddleware'
 ]
 
 
