@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
 from pathlib import Path
-from datetime import timedelta
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,7 +20,21 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-3!0+-st)h^7o(gzjoecdi7$@5vl1gz+&pqevxi4l0a^625(&c6'
+SECRET_KEY = 'django-insecure-very-secret-key'
+
+# Internationalization
+# https://docs.djangoproject.com/en/6.0/topics/i18n/
+LANGUAGE_CODE = 'en-us'
+
+TIME_ZONE = 'UTC'
+
+USE_I18N = True
+
+USE_TZ = True
+
+JWT_SETTINGS = {
+    "ALGORITHM": "HS256",
+}
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -47,7 +60,8 @@ INSTALLED_APPS = [
     'eligibility_checking',
     'sign_up_page',
     'sign_up_for_users',
-    'users'
+    'users',
+    'jwt_auth'
     
 ]
 
@@ -62,7 +76,8 @@ MIDDLEWARE = [
     # 'eligibility_checking.middleware.LoginCheckMiddleware',
     # 'sign_up_page.middleware.regexMiddleware',
     # 'sign_up_for_users.middleware.validationMiddleware'
-    'sign_up_for_users.middleware.validationMiddleware'
+    'sign_up_for_users.middleware.ValidationMiddleware',
+    'jwt_auth.middleware.Checkingmiddleware'
 ]
 
 
@@ -122,17 +137,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
-# Internationalization
-# https://docs.djangoproject.com/en/6.0/topics/i18n/
-
-LANGUAGE_CODE = 'en-us'
-
-TIME_ZONE = 'UTC'
-
-USE_I18N = True
-
-USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)

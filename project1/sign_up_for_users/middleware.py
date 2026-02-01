@@ -1,7 +1,7 @@
 import json, re
 from django.http import JsonResponse
 
-class validationMiddleware:
+class ValidationMiddleware:
 
     def __init__(self, get_response):
         self.get_response = get_response

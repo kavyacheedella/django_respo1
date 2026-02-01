@@ -22,9 +22,10 @@ from moviedetails.views import BookMyshow,get_all_movies
 from bookstore.views import bookdetails,get_details,update_book_details,del_book_details,update_book_by_author_regex,delete_book_by_author_regex
 from registrations.views import student_registration,get_student_details
 from eligibility_checking.views import attend_exam
-from sign_up_page.views import signup_view,login_view,logout_view
+# from sign_up_page.views import signup_view,login_view,logout_view
 from sign_up_for_users.views import signup,login
 from users.views import user_data , get_users
+from jwt_auth.views import signup_view,login_view,protected_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -52,11 +53,14 @@ urlpatterns = [
     path('delbookdetailsregex/',delete_book_by_author_regex),
     path('updatebookdetailsregex/',update_book_by_author_regex),
     path('student_eligibility/',attend_exam),
-    path('signup_view/',signup_view),
-    path('login_view/',login_view),
-    path('logout_view/',logout_view),
+    # path('signup_view/',signup_view),
+    # path('login_view/',login_view),
+    # path('logout_view/',logout_view),
     path('signup/',signup),
     path('login/',login),
     path('add-user/',user_data),
-    path('users/',get_users)
+    path('users/',get_users),
+    path('signup_auth/',signup_view),
+    path('login_auth/',login_view),
+    path('protect_auth/',protected_view)
 ]
